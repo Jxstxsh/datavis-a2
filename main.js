@@ -1,9 +1,66 @@
 // Waiting until document has loaded
 window.onload = () => {
 
-  // YOUR CODE GOES HERE
-  console.log("YOUR CODE GOES HERE");
+	console.log("main script loaded");
 
-  // Load the data set from the assets folder:
+	const svg = d3.select("svg");
+	const width = +svg.attr("width");
+	const height = +svg.attr("height");
+	const margin = { top: 30, right: 30, bottom: 40, left: 50 };
 
+	// Load the data set from the assets folder:
+	d3.csv("cars.csv").then(rawData => {
+		const data = rawData.map(d => ({
+		x: +d.Horsepower,
+		y: +d.RetailPrice,
+		//engineSize: +d.EngineSize,
+		//type: +d.Type
+		}));
+		return data;
+	}).then(data => {
+
+
+	//d3.csv("example.csv").then(rawData => {
+		//const data = rawData.map(d => ({
+			//x: +d.x,
+			//y: +d.y
+		//}));
+		//return data;
+	//}).then(data => {
+
+	// Define scales
+	const xScale = d3.scaleLinear()
+    .domain([0, d3.max(data, d => d.x)])			// domain means input range of the data
+    .range([margin.left, width - margin.right]);	// range means output range on the screen
+
+	const yScale = d3.scaleLinear()
+    .domain([0, d3.max(data, d => d.y)])
+    .range([height - margin.bottom, margin.top]);
+
+	// Add axes
+	const xAxis = d3.axisBottom(xScale);
+	const yAxis = d3.axisLeft(yScale);	
+
+	svg.append("g")									// g is a group element
+    .attr("transform", `translate(0,${height - margin.bottom})`)
+    .call(xAxis);
+
+	svg.append("g")
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(yAxis);
+
+	svg.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cx", d => xScale(d.x))
+    .attr("cy", d => yScale(d.y))
+    .attr("r", 6);
+	});
+
+	// Attributes and their encoding
+	// Color ->   Engine Size (l)
+	// Symbol ->  Type
+	// X-Axis ->  Horsepower
+	// Y-Axis ->  Retail price
 };
