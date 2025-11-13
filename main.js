@@ -24,13 +24,23 @@ window.onload = () => {
 		}
 	}
 
+	function TypeToSymbol(type) {
+		const symbolScale = d3.scaleOrdinal()
+			.domain(["Sedan", "SUV", "Sports Car", "Wagon", "Minivan"])
+			.range([d3.symbolCircle, d3.symbolSquare, d3.symbolTriangle, d3.symbolDiamond, d3.symbolCross]);
+		console.log(type);
+		return symbolScale(type);
+	}
+
+	const symbolGenerator = d3.symbol().size(100);
+
 	// Load the data set from the assets folder:
 	d3.csv("cars.csv").then(rawData => {
 		const data = rawData.map(d => ({
 		x: +d.Horsepower,
 		y: +d.RetailPrice,
 		engineSize: +d.EngineSize,
-		//type: +d.Type
+		type: d.Type
 		}));
 		return data;
 	}).then(data => {	
@@ -44,10 +54,6 @@ window.onload = () => {
     .domain([0, d3.max(data, d => d.y)])
     .range([height - margin.bottom, margin.top]);
 
-	const scaleOrdinalEngine = d3.scaleOrdinal()
-	.domain([1.4, 6.0])  // Beispielwerte für Motorgrößen
-	.range(d3.schemeCategory10);  // Verwenden eines vordefinierten Farbschemas
-
 	// Add axes
 	const xAxis = d3.axisBottom(xScale);
 	const yAxis = d3.axisLeft(yScale);	
@@ -60,19 +66,24 @@ window.onload = () => {
     .attr("transform", `translate(${margin.left},0)`)
     .call(yAxis);
 
-	svg.selectAll("circle")
+	svg.selectAll("path")
     .data(data)
     .enter()
-    .append("circle")
-    .attr("cx", d => xScale(d.x))
-    .attr("cy", d => yScale(d.y))
+    .append("path")
+	.attr("d", d => symbolGenerator.type(TypeToSymbol(d.type))())
+    //.attr("cx", d => xScale(d.x))
+    //.attr("cy", d => yScale(d.y))
+	.attr("transform", d => `translate(${xScale(d.x)},${yScale(d.y)})`)
     .attr("r", 6)
-    .attr("fill", d => EngineSizeToColor(d.engineSize));
+    .attr("fill", d => EngineSizeToColor(d.engineSize))
+	.attr("stroke", "white")
+	.attr("stroke-width", 1.5)
+	.attr("opacity", 0.7);
 
 	// label for x axis
 	svg.append("text")
 	.attr("class", "x-label")
-	.attr("x", width / 2)
+	.attr("x", width / 2)	
 	.attr("y", height)
 	.attr("text-anchor", "middle")
 	.text("Horsepower (HP)");
