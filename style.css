@@ -1,5 +1,8 @@
 body {
     height: 100%;
+    margin: 0;
+    padding-left: 20px;
+    font-family: Arial, sans-serif;
 }
 
 /* YOUR CSS CODE GOES HERE */
@@ -13,4 +16,19 @@ circle {
 
 svg {
     border: 1px solid #ccc;
+    padding: 10px;
+}
+
+text {
+    font-size: 12px;
+}
+
+.x-label {
+    padding: 5px;
+    font-size: 15px;
+}
+
+.y-label {
+    padding: 5px;
+    font-size: 15px;
 }

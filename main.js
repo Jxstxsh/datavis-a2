@@ -6,7 +6,7 @@ window.onload = () => {
 	const svg = d3.select("svg");
 	const width = +svg.attr("width");
 	const height = +svg.attr("height");
-	const margin = { top: 30, right: 30, bottom: 40, left: 50 };
+	const margin = { top: 30, right: 30, bottom: 50, left: 80 };
 
 	// Load the data set from the assets folder:
 	d3.csv("cars.csv").then(rawData => {
@@ -56,6 +56,23 @@ window.onload = () => {
     .attr("cx", d => xScale(d.x))
     .attr("cy", d => yScale(d.y))
     .attr("r", 6);
+
+	// label for x axis
+	svg.append("text")
+	.attr("class", "x-label")
+	.attr("x", width / 2)
+	.attr("y", height)
+	.attr("text-anchor", "middle")
+	.text("Horsepower (HP)");
+
+	// label for y axis
+	svg.append("text")
+	.attr("class", "y-label")
+	.attr("transform", "rotate(-90)")
+	.attr("x", -height / 2)
+	.attr("y", 15)
+	.attr("text-anchor", "middle")
+	.text("Retail Price ($)");
 	});
 
 	// Attributes and their encoding
