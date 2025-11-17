@@ -9,14 +9,69 @@
 
     <!-- Loading style.css; use if needed -->
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
 </head>
 
 <body>
     <h1>DataVis - Assigment 2</h1>
     <p>Scatterplot visualization of different cars</p>
-
-    <svg width="1100" height="800"></svg>
-
+    
+    <div id="main-content">
+        <svg width="1100" height="800"></svg>
+        <div id="legend">
+            <h2>Legend</h2>
+            <div id="legend-type">
+                <h3>Type of Cars</h3>
+                <div class="legend-item">
+                    <i class="material-icons">circle</i>
+                    <p>Sedan</p>
+                </div>
+                <div class="legend-item">
+                    <i class="material-icons">square</i>
+                    <p>SUV</p>
+                </div>
+                <div class="legend-item">
+                    <i class="material-icons">change_history</i>
+                    <p>Sports Car</p>
+                </div>
+                <div class="legend-item">
+                    <i class="material-icons">star</i>
+                    <p>Wagon</p>
+                </div>
+                <div class="legend-item">
+                    <i class="material-icons">add</i>
+                    <p>Minivan</p>
+                </div>
+            </div>
+            <div id="legend-engine-size">
+                <h3>Engine Size (L)</h3>
+                <div class="legend-item">
+                    <svg id ="legend-item-grey" width="30" height="20"></svg>
+                    <p>&lt;1.4</p>
+                </div>
+                <div class="legend-item">
+                    <svg id ="legend-item-lightblue" width="30" height="20"></svg>
+                    <p>1.4-1.9</p>
+                </div>
+                <div class="legend-item">
+                    <svg id ="legend-item-blue" width="30" height="20"></svg>
+                    <p>2.0-2.9</p>
+                </div>
+                <div class="legend-item">
+                    <svg id ="legend-item-green" width="30" height="20"></svg>
+                    <p>3.0-3.9</p>
+                </div>
+                <div class="legend-item">
+                    <svg id ="legend-item-orange" width="30" height="20"></svg>
+                    <p>4.0-4.9</p>
+                </div>
+                <div class="legend-item">
+                    <svg id ="legend-item-red" width="30" height="20"></svg>
+                    <p>5.0-6.0</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>

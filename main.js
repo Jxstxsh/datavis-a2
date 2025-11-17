@@ -27,8 +27,7 @@ window.onload = () => {
 	function TypeToSymbol(type) {
 		const symbolScale = d3.scaleOrdinal()
 			.domain(["Sedan", "SUV", "Sports Car", "Wagon", "Minivan"])
-			.range([d3.symbolCircle, d3.symbolSquare, d3.symbolTriangle, d3.symbolDiamond, d3.symbolCross]);
-		console.log(type);
+			.range([d3.symbolCircle, d3.symbolSquare, d3.symbolTriangle, d3.symbolStar, d3.symbolCross]);
 		return symbolScale(type);
 	}
 
@@ -71,8 +70,6 @@ window.onload = () => {
     .enter()
     .append("path")
 	.attr("d", d => symbolGenerator.type(TypeToSymbol(d.type))())
-    //.attr("cx", d => xScale(d.x))
-    //.attr("cy", d => yScale(d.y))
 	.attr("transform", d => `translate(${xScale(d.x)},${yScale(d.y)})`)
     .attr("r", 6)
     .attr("fill", d => EngineSizeToColor(d.engineSize))

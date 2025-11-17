@@ -16,6 +16,8 @@ circle {
 svg {
     border: 1px solid #ccc;
     padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
 }
 
 text {
@@ -30,4 +32,64 @@ text {
 .y-label {
     padding: 5px;
     font-size: 15px;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: row;
+}
+
+#legend {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.legend-item i {
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.legend-item svg {
+    border: 1px solid #ccc;
+    padding: 0px;
+    border-radius: 10px;
+}
+
+#legend-item-grey {
+    background-color: grey;
+    margin-right: 8px;
+}
+
+#legend-item-lightblue {
+    background-color: lightblue;
+    margin-right: 8px;
+}
+
+#legend-item-blue {
+    background-color: blue;
+    margin-right: 8px;
+}
+
+#legend-item-green {
+    background-color: green;
+    margin-right: 8px;
+}
+
+#legend-item-orange {
+    background-color: orange;
+    margin-right: 8px;
+}
+
+#legend-item-red {
+    background-color: red;
+    margin-right: 8px;
 }
