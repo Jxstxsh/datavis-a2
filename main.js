@@ -4,8 +4,8 @@ window.onload = () => {
 	console.log("main script loaded");
 
 	const svg = d3.select("svg");
-	const width = svg.node().getBoundingClientRect().width-15;
-	const height = svg.node().getBoundingClientRect().height-15;
+	const width = +svg.attr("width");
+	const height = +svg.attr("height");
 	const margin = { top: 30, right: 30, bottom: 50, left: 80 };
 	const carName = d3.select("#car-name");
 	const carRetailPrice = d3.select("#car-retail-price");

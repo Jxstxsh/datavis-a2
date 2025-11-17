@@ -1,6 +1,7 @@
 Name: Justus Hänsel
 
-Link to my repository:
+Link to my repository: https://github.com/Jxstxsh/datavis-a2
+Link to github page: https://jxstxsh.github.io/datavis-a2/
 
 Principle of a scatterplot matrix:
 
