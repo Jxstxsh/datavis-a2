@@ -2,6 +2,7 @@ body {
     height: 100%;
     margin: 0;
     padding-left: 20px;
+    padding-right: 20px;
     font-family: Arial, sans-serif;
 }
 
@@ -15,9 +16,10 @@ circle {
 
 svg {
     border: 1px solid #ccc;
-    padding: 10px;
     background-color: #f9f9f9;
     border-radius: 10px;
+    margin-bottom: 0px;
+    padding-left: 10px;
 }
 
 text {
@@ -25,12 +27,10 @@ text {
 }
 
 .x-label {
-    padding: 5px;
     font-size: 15px;
 }
 
 .y-label {
-    padding: 5px;
     font-size: 15px;
 }
 
@@ -40,9 +40,11 @@ text {
 }
 
 #legend {
+    width: 20%;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     padding: 10px;
+    margin-left: 5px;
     border-radius: 10px;
 }
 
@@ -92,4 +94,34 @@ text {
 #legend-item-red {
     background-color: red;
     margin-right: 8px;
+}
+
+#car-details {
+    width: 20%;
+    padding: 10px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.car-detail-row {
+    margin-bottom: 8px;
+    display: flex;
+}
+
+.car-detail-row p:first-child {
+    font-weight: bold;
+}
+
+#car-info-blank {
+    display: block;
+}
+
+#car-info-filled {
+    display: none;
+}
+
+#car-info-filled p {
+    margin-left: 5px;
 }

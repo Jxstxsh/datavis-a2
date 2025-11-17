@@ -11,7 +11,8 @@ Pre-requisite: [Node.js](https://nodejs.org/en). Install `serve` using:
 And start the application using 
 > serve -p 8000 
 
-Stop the server using Ctrl+C in the terminal.
+Stop the server using:
+> Ctrl+C
 
 You should then be able to see your website at [http://localhost:8000](http://localhost:8000). 
 

@@ -4,10 +4,20 @@ window.onload = () => {
 	console.log("main script loaded");
 
 	const svg = d3.select("svg");
-	const width = +svg.attr("width");
-	const height = +svg.attr("height");
+	const width = svg.node().getBoundingClientRect().width-15;
+	const height = svg.node().getBoundingClientRect().height-15;
 	const margin = { top: 30, right: 30, bottom: 50, left: 80 };
+	const carName = d3.select("#car-name");
+	const carRetailPrice = d3.select("#car-retail-price");
+	const carHorsepower = d3.select("#car-horsepower");
+	const carType = d3.select("#car-type");
+	const carEngineSize = d3.select("#car-engine-size");
+	const carWeight = d3.select("#car-weight");
+	const carInfoFilled = d3.select("#car-info-filled");
+	const carInfoBlank = d3.select("#car-info-blank");
+	const symbolGenerator = d3.symbol().size(100);
 
+	// mapping engine size to color
 	function EngineSizeToColor(engineSize) {
 		if (engineSize < 1.4) {
 			return "grey"
@@ -24,6 +34,7 @@ window.onload = () => {
 		}
 	}
 
+	// mapping car type to symbol
 	function TypeToSymbol(type) {
 		const symbolScale = d3.scaleOrdinal()
 			.domain(["Sedan", "SUV", "Sports Car", "Wagon", "Minivan"])
@@ -31,16 +42,17 @@ window.onload = () => {
 		return symbolScale(type);
 	}
 
-	const symbolGenerator = d3.symbol().size(100);
-
 	// Load the data set from the assets folder:
 	d3.csv("cars.csv").then(rawData => {
 		const data = rawData.map(d => ({
 		x: +d.Horsepower,
 		y: +d.RetailPrice,
 		engineSize: +d.EngineSize,
-		type: d.Type
+		type: d.Type,
+		name: d.Name,
+		weight: +d.Weight
 		}));
+		console.log("Data loaded:", data[0]); // Debug: check first data point
 		return data;
 	}).then(data => {	
 
@@ -75,13 +87,29 @@ window.onload = () => {
     .attr("fill", d => EngineSizeToColor(d.engineSize))
 	.attr("stroke", "white")
 	.attr("stroke-width", 1.5)
-	.attr("opacity", 0.7);
+	.attr("opacity", 0.7)
+	.style("cursor", "pointer")
+	.on("click", function(d) {
+		console.log("Clicked point:", d);
+		carName.text(`${d.name}`);
+		carRetailPrice.text(`$${d.y.toLocaleString()}`);
+		carHorsepower.text(`${d.x} HP`);
+		carType.text(d.type);
+		carEngineSize.text(`${d.engineSize} L`);
+		carWeight.text(`${d.weight} lbs`);
+		carInfoFilled.style("display", "block");
+		carInfoBlank.style("display", "none");
+		d3.select(this).attr("opacity", 1).attr("stroke-width", 2.5);
+	})
+	.on("mouseout", function() {
+		d3.select(this).attr("opacity", 0.7).attr("stroke-width", 1.5);
+	});
 
 	// label for x axis
 	svg.append("text")
 	.attr("class", "x-label")
 	.attr("x", width / 2)	
-	.attr("y", height)
+	.attr("y", height-10)
 	.attr("text-anchor", "middle")
 	.text("Horsepower (HP)");
 

@@ -17,7 +17,7 @@
     <p>Scatterplot visualization of different cars</p>
     
     <div id="main-content">
-        <svg width="1100" height="800"></svg>
+        <svg width="60%" height="800"></svg>
         <div id="legend">
             <h2>Legend</h2>
             <div id="legend-type">
@@ -67,7 +67,39 @@
                 </div>
                 <div class="legend-item">
                     <svg id ="legend-item-red" width="30" height="20"></svg>
-                    <p>5.0-6.0</p>
+                    <p>&GreaterEqual;5.0</p>
+                </div>
+            </div>
+        </div>
+        <div id="car-details">
+            <h2>Car Details</h2>
+            <div id="car-info-blank">
+                <p>Select a car to see details here.</p>
+            </div>
+            <div id="car-info-filled">
+                <div class="car-detail-row">
+                    <p>Name:</p>
+                    <p id="car-name"></p>
+                </div>
+                <div class="car-detail-row">
+                    <p>Retail Price:</p>
+                    <p id="car-retail-price"></p>
+                </div>
+                <div class="car-detail-row">
+                    <p>Horsepower:</p>
+                    <p id="car-horsepower"></p>
+                </div>
+                <div class="car-detail-row">
+                    <p>Type:</p>
+                    <p id="car-type"></p>
+                </div>
+                <div class="car-detail-row">
+                    <p>Engine Size:</p>
+                    <p id="car-engine-size"></p>
+                </div>
+                <div class="car-detail-row">
+                    <p>Weight:</p>
+                    <p id="car-weight"></p>
                 </div>
             </div>
         </div>

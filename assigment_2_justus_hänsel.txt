@@ -1,0 +1,9 @@
+Name: Justus Hänsel
+
+Link to my repository:
+
+Principle of a scatterplot matrix:
+
+How many scatterplots for n attributes?
+
+Advantages and disadvantages:
