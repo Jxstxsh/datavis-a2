@@ -4,7 +4,19 @@ Link to my repository: https://github.com/Jxstxsh/datavis-a2
 Link to github page: https://jxstxsh.github.io/datavis-a2/
 
 Principle of a scatterplot matrix:
+- Combines more than 2 attributes
+- Makes it possible to compare objects
 
 How many scatterplots for n attributes?
+- (n^2)-2
+- But only ((n^2)-2)/2 unique scatterplots
 
 Advantages and disadvantages:
+- Advantages:
+    - Ability to compare objects across several attributes
+    - Visualize relationships 
+- Disadvantages:
+    - Increased cognitive load
+    - Every object appears mutliple times
+    - Not much space for labels
+    - Scalability issues
